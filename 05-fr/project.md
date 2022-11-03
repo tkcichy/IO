@@ -50,10 +50,12 @@ Osoba chcąca zakupić produkt na aukcji.
 
 [Sprzedający](#ac1):
 * [UC1](#uc1): Wystawienie produktu na aukcję
-* ...
+* [UC5](#uc5): Zamówienie kuriera w celu wysłania paczki
 
-[Kupujący](#ac2)
-* ...
+[Kupujący](#ac2):
+* [UC2](#uc2): Przebicie aktualnej oferty aukcyjnej
+* [UC3](#uc3): Potwierdzenie wygranej i zapłata za produkt
+* [UC4](#uc4): Podanie danych do wysyłki
 
 ---
 <a id="uc1"></a>
@@ -77,20 +79,58 @@ Osoba chcąca zakupić produkt na aukcji.
 ---
 
 <a id="uc2"></a>
-### UC2: ...
+### UC2: Przebicie aktualnej ceny
 
-**Aktorzy:** [Sprzedający](#ac1), [Kupujący](#ac2), ...
+**Aktorzy:** [Kupujący](#ac2)
 
 **Scenariusz główny:**
-1. ...
-
+1. [Kupujący](#ac2) zgłasza chęć przebicia aktualnie nwjwyższej oferty.
+2. System prosi o podanie proponowanej oferty
+3. [Kupujący](#ac2) podaje swoją ofertę.
+4. System zatwierdza ofertę i oznacza jako aktualnie najwyższą, a kupującego jako aktualnie wygrywającego aukcje.
 **Scenariusze alternatywne:** 
 
-1.A. ...
-* 4.A.1. ...
+2.A System prosi o podanie danych do karty płatniczej
+4.A [Kupujący](#ac2) podał złą ofertę.
+* 4.A.1 System informuje o podaniu złych danych
+* 4.A.1 Powrót do kroku 2.
 
 ---
 
+<a id="uc3"></a>
+### UC3: Wygranie aukcji
+
+**Aktorzy:** [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. [Kupujący](#ac2) wygrywa aukcje.
+2. System automatycznie pobiera pieniądze na podstawie danych karty kupującego.
+3. System prosi [Kupującego](#ac2) o potwierdzenie danych wysyłki. 
+
+**Scenariusze alternatywne:**
+
+2.A System zgłasza błąd podczas próby pobrania pieniędzy kupującego, próbe ponowi po 30 minutach.
+
+---
+
+<a id="uc4"></a>
+### UC4: Podanie danych wysyłki
+
+**Aktorzy:** [Kupujący](#ac2)
+
+**Scenariusz główny:**
+1. System prosi [kupującego](#ac2) o uzupełnienie danych do wysyłki.
+
+---
+
+<a id="uc5"></a>
+### UC5: Zamówienie kuriera w celu wysłania paczki
+
+**Aktorzy:** [Sprzedający](#ac1)
+
+**Scenariusz główny:**
+1. ....
+---
 ## Obiewkty biznesowe (inaczje obiekty dziedzinowe lub informatycjne)
 
 ### BO1: Aukcja
